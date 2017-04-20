@@ -12,9 +12,10 @@ RUN curl -O -L https://github.com/google/protobuf/releases/download/v3.2.0/proto
 WORKDIR /tmp/grpc-build
 RUN git clone https://github.com/grpc/grpc-swift && \
     cd grpc-swift/Plugin && \
+    git checkout 0c73d72 && \
     make && \
     cp protoc-gen-swift /usr/bin && \
     cp protoc-gen-swiftgrpc /usr/bin
-    
+
 WORKDIR /
 RUN rm -r /tmp/grpc-build
